@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$blue-1: #3b5998;
+$blue-2: #436BB8;
+$blue-3: #8b9dc3;
+$blue-4: #dfe3ee;
+$blue-5: #f7f7f7;
+$blue-6: #ffffff;
+
+.navbar {
+  height: 82px;
+  background-color: $blue-1;
+  .navbar-brand {
+    color: white;
+    font-size: 43px;
+    font-weight: 700;
+    padding: 35px;
+  }
+  form {
+    font-size: 12px;
+    input {
+      height: 24px;
+      margin-right: 10px;
+      border-radius: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    label {
+      color: white;
+      font-weight: 320;
+    }
+    button {
+      height: 24px;
+      font-size: 12px;
+      background-color: $blue-2;
+      border: $blue-2;
+      color: white;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border-radius: 3px;
+    }
+    .forgotten-link {
+      color: $blue-3;
+    }
+  }
+}
+
+body {
+  padding-top: 82px;
+  background-color: $blue-4;
+  .signup-description {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .signup-area {
+    .cta  {
+      padding-left: 100px;
+      padding-top: 50px;
+    }
+    form {
+      .btn-info {
+        background-color: green;
+      }
+    }
+  }
+  .signup-image{
+    width: 100%;
+  }
+}

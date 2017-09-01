@@ -1,0 +1,91 @@
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">facebook</a>
+    </div>
+    <form class="navbar-form navbar-right" role="login">
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="email">Email or Phone</label></td>
+            <td><label for="password">Password</label></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="">
+              </div>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-default">Log In</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+              <td><%= link_to "Forgotten account?", "#", class: "forgotten-link" %></td>
+              <td><%= link_to "Log in with facebook", "#", class: "forgotten-link" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>        
+
+  </div>
+</nav>
+
+<div class="container theme-showcase body" role="main">
+  <div class="row signup-area">
+    <div class="col-sm-7 cta">
+      <p class="signup-description">Facebook helps you connect and share with the people in your life.</p>
+      <%= image_tag "signup-image.png", class: "signup-image" %>
+    </div>
+    <div class="col-sm-5">
+      <h1>Create an account</h1>
+      <h4>It's free and always will be.</h4>
+      <form class="form">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <input type="text" placeholder="First name" class="form-control">
+            </div>
+            <div class="col-sm-6">
+              <input type="text" placeholder="Surname" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Mobile number or email address" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="New password" class="form-control">
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="Gender" value="Female">
+            Female
+          </label>
+          <label>
+            <input type="radio" name="Gender" value="Male">
+            Male
+          </label>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Create an account" class="btn btn-info btn-lg">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
