@@ -9,9 +9,16 @@
   </head>
 
   <body>
-    <% flash.each do |type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{type}") %>
-    <% end %>
+    <div class="row">
+      <% flash.each do |type, message| %>
+        
+        <% type = "info" if type == "notice" %>
+        <% type = "warning" if type == "alert" %>
+        <div class="col-sm-12">
+          <%= content_tag(:div, message, class: "alert alert-#{type}") %>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

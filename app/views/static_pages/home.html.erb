@@ -9,9 +9,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">facebook</a>
+      <a class="navbar-brand" href="#">fakebook</a>
     </div>
-    <form class="navbar-form navbar-right" role="login">
+    <%= form_tag(user_session_path, class: "navbar-form navbar-right", method: :post) do %>
       <table>
         <tbody>
           <tr>
@@ -21,12 +21,12 @@
           <tr>
             <td>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" name="user[email]" class="form-control" placeholder="">
               </div>
             </td>
             <td>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="">
+                <input type="password" name="user[password]" class="form-control" placeholder="">
               </div>
             </td>
             <td>
@@ -40,7 +40,7 @@
           </tr>
         </tbody>
       </table>
-    </form>        
+    <% end %>        
 
   </div>
 </nav>
@@ -48,44 +48,59 @@
 <div class="container theme-showcase body" role="main">
   <div class="row signup-area">
     <div class="col-sm-7 cta">
-      <p class="signup-description">Facebook helps you connect and share with the people in your life.</p>
+      <p class="signup-description">Fakebook helps you connect and share with the people in your life.</p>
       <%= image_tag "signup-image.png", class: "signup-image" %>
     </div>
     <div class="col-sm-5">
       <h1>Create an account</h1>
       <h4>It's free and always will be.</h4>
-      <form class="form">
+      <%= form_for @user do |f| %>
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6">
-              <input type="text" placeholder="First name" class="form-control">
+              <%= f.text_field :name, class: "form-control", placeholder: "First name" %>
             </div>
             <div class="col-sm-6">
-              <input type="text" placeholder="Surname" class="form-control">
+              <%= f.text_field :surname, class: "form-control", placeholder: "Surname" %>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <input type="email" placeholder="Mobile number or email address" class="form-control">
+          <%= f.text_field :email, class: "form-control", placeholder: "Mobile number or email address" %>
         </div>
         <div class="form-group">
-          <input type="password" placeholder="New password" class="form-control">
+          <%= f.password_field :password, class: "form-control", placeholder: "New password" %>
         </div>
         <div class="radio">
-          <label>
-            <input type="radio" name="Gender" value="Female">
-            Female
-          </label>
-          <label>
-            <input type="radio" name="Gender" value="Male">
-            Male
-          </label>
+          <%= f.radio_button(:gender, "Female") %>
+          <%= f.label(:gender_female, "Female") %>
+          <%= f.radio_button(:gender, "Male") %>
+          <%= f.label(:gender_male, "Male") %>
         </div>
         <div class="form-group">
-          <input type="submit" value="Create an account" class="btn btn-info btn-lg">
+          <%= f.submit "Create an account", class: "btn btn-info btn-lg" %>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>
 
+<footer class="footer navbar-fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Made with ❤ by adam_pal</p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <a href="linkedin">LinkedIn</a>
+        <a href="github">Github</a>
+        <% if user_signed_in? %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<%= render "welcome_modal" %>
