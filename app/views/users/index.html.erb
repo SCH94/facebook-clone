@@ -1,0 +1,51 @@
+<h3>Current Friends</h3>
+<% @friends.each do |friend| %>
+  <div class="widget">
+    <%= link_to friend.full_name, friend %>
+    <%= link_to delete_friend_path(friend.id), method: :delete do %>
+      <button class="btn btn-danger pull-right">Unfriend</button>
+    <% end %>
+  </div>
+<% end %>
+
+
+<h3>Pending Friend Requests</h3>
+<% @received_requests.each do |request| %>
+  <% unless request.status == "Accepted" %>
+    <div class="widget">
+      <%= link_to request.requestor.full_name, request.requestor %>
+      <%= link_to accept_request_path(request), method: :post do %>
+        <button class="btn btn-primary pull-right">Accept</button>
+      <% end %>
+      <%= link_to reject_request_path(request), method: :post do %>
+        <button class="btn btn-primary pull-right">Reject</button>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<h3>Other Users</h3>
+
+<% @users.each do |user| %>
+  <% unless user == current_user || @friends.include?(user) || @incoming_pending_friends.include?(user) %>
+    <div class="widget">
+      <div class="row">
+          <div class="col-md-6">
+            <%= link_to user.full_name, user %>
+          </div>
+          <div class="col-md-6">
+            <% if @pending_friends.include?(user) %>
+              <%= link_to friend_request_path(user.id), method: :delete do %>
+                <button class="btn btn-primary pull-right">Cancel Friend Request</button>
+              <% end %>
+            <% else %>
+              <%= form_for @new_request do |f| %>
+                <%= f.hidden_field :receiver_id, value: user.id %>
+                <%= f.submit "Add Friend", class: "btn btn-primary pull-right" %>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -8,7 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+    <% if user_signed_in? %>
+    <body class="loggedin-body">
+      <%= render 'layouts/logged_in_menu' %>
+    <% else %>
+    <body class="loggedout-body">
+    <% end %>
     <div class="row">
       <% flash.each do |type, message| %>
         
@@ -19,6 +24,22 @@
         </div>
       <% end %>
     </div>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            Left menu
+          </div>
+          <div class="col-md-7">
+            <%= yield %>
+          </div>
+          <div class="col-md-3">
+            Right menu
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

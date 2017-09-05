@@ -25,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'faker'
 
 
 # Use CoffeeScript for .coffee assets and views
