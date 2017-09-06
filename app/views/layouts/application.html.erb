@@ -27,14 +27,14 @@
     <% if user_signed_in? %>
       <div class="container">
         <div class="row">
-          <div class="col-md-2">
-            Left menu
+          <div class="col-md-2 left-menu">
+            <%= render "layouts/left_menu" %>
           </div>
           <div class="col-md-7">
             <%= yield %>
           </div>
-          <div class="col-md-3">
-            Right menu
+          <div class="col-md-3 right-menu">
+            <%= render "layouts/right_menu" %>
           </div>
         </div>
       </div>

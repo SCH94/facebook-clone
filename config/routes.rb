@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :likes, only: [:create, :destroy]
+
+  resources :notifications, only: [:show]
+  resources :comments, only: [:create, :destroy]
+
   devise_for :users
   resources :users
   resources :posts
@@ -7,6 +12,7 @@ Rails.application.routes.draw do
   delete 'friend_request/:receiver_id', to: 'friend_requests#destroy', as: 'friend_request'
   post 'accept_friend_request/:request_id', to: 'friend_requests#accept', as: 'accept_request'
   post 'reject_friend_request/:request_id', to: 'friend_requests#reject', as: 'reject_request'
+  get 'random_friend', to: 'friend_requests#random', as: 'random_request'
   resources :friendships, only: [:create, :destroy]
   delete 'delete_friend/:friend_id', to: 'friendships#unfriend', as: 'delete_friend'
 #   post 'friend_request/:sender_id/:receiver_id', to: 'friend_requests#create', as: 'friend_request'

@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     #@posts = Post.order("posts.created_at DESC").all
     @posts = current_user.feed
     @post = current_user.posts.new
+    @liked_posts = current_user.liked_posts
   end
 
   # GET /posts/1

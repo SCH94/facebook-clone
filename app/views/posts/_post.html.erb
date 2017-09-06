@@ -11,7 +11,34 @@
   </div>
   <hr>
   <%= post.content %>
-  <div class="widget-footer">
+  <hr>
+  <div class="widget-footer clearfix">
+    <% if current_user.liked_posts.include?(post) %>
+      <%= form_for(current_user.likes.find_by(post_id: post.id), html: {method: :delete} ) do |f| %>
+        <%= f.submit "Unlike" %>
+      <% end %>
+    <% else %>
+      <%= form_for(current_user.likes.build) do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.submit "Like" %>
+      <% end %>
+    <% end %>
+    <% if post.likes.count > 0 %>
+      <%= pluralize(post.likes.count, "like", "likes") %>
+    <% end %>
     
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li><%= link_to comment.user.full_name, comment.user %> <%= comment.comment_text %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
+    <%= form_for(current_user.comments.build, class: "clearfix") do |f| %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.text_area :comment_text %>
+      <%= f.submit "Post Comment", class: "btn btn-primary pull-right" %>
+    <% end %>
   </div>
 </div>

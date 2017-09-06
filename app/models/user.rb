@@ -15,19 +15,17 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :from_id
   has_many :friends, through: :friendships, source: :to
   
+  has_many :notifications
+  
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+  
+  has_many :comments
 
   def full_name
     "#{name} #{surname}"
   end
   
-  def notifications
-    posts = Post.all.limit(5)
-    result = Array.new
-    posts.each do |post|
-      result << "#{post.user.name} added a new picture"
-    end
-    result
-  end
   
   
   def unfriend(user)

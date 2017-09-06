@@ -1,10 +1,8 @@
-class Post < ApplicationRecord
+class Notification < ApplicationRecord
   belongs_to :user
   
   default_scope -> { order(created_at: :desc) }
   
-  has_many :likes
-  
-  has_many :comments
+  scope :unread, -> { where(read: nil) }
   
 end
