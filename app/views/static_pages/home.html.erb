@@ -36,7 +36,7 @@
           <tr>
             <td></td>
               <td><%= link_to "Forgotten account?", "#", class: "forgotten-link" %></td>
-              <td><%= link_to "Log in with facebook", "#", class: "forgotten-link" %></td>
+              <td><%= link_to "Log in with facebook", user_facebook_omniauth_authorize_path, class: "forgotten-link" %></td>
           </tr>
         </tbody>
       </table>

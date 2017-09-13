@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:show]
   resources :comments, only: [:create, :destroy]
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :users
   resources :posts
   resources :friend_requests, only: :create

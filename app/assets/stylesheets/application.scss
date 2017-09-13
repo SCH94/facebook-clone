@@ -124,6 +124,9 @@ $blue-6: #ffffff;
       }
     }
   }
+  .gravatar {
+    margin-top: 6px;
+  }
 }
 
 .left-menu {
@@ -179,6 +182,12 @@ body {
   .signup-image{
     width: 100%;
   }
+}
+
+.gravatar {
+  //padding-top: 25%;
+  //padding-bottom: 25%;
+  border-radius: 30px;
 }
 
 .widget {

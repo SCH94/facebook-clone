@@ -2,7 +2,7 @@
   <div class="post-header">
     <table>
       <tr>
-        <td><%= link_to "#{post.user.name} #{post.user.surname}", post.user %></td>
+        <td><%= gravatar_for(post.user, 30) %> <%= link_to "#{post.user.name} #{post.user.surname}", post.user %></td>
       </tr>
       <tr>
         <td class="time-ago"><%= time_ago_in_words post.created_at %> ago</td>
