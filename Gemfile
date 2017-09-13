@@ -30,6 +30,10 @@ gem 'faker'
 gem 'omniauth-facebook'
 gem 'figaro'
 
+gem 'letter_opener', group: :development
+
+gem 'sendgrid-ruby', group: :production
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
