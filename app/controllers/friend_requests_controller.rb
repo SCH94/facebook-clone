@@ -29,8 +29,8 @@ class FriendRequestsController < ApplicationController
   
   def random
     random_id = rand(User.count) + 1 
-    random_user = User.find(random_id)
-    FriendRequest.create(requestor_id: random_id, requested_id: current_user.id)
+    random_user = User.offset(rand(User.count)).first
+    FriendRequest.create(requestor_id: random_user.id, requested_id: current_user.id)
     Notification.create(user_id: current_user.id, message: "#{random_user.full_name} just sent you a friend request")
     redirect_to users_path
   end
